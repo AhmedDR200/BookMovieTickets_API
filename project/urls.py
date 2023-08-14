@@ -20,5 +20,7 @@ from tickets import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     # way 1
-    path('django/json/', views.no_rest_no_model, name="no"),
+    path('django/json-no-model/', views.no_rest_no_model, name="no-no"),
+    # way 2
+    path("django/json-from-model/", views.no_rest_from_model, name="no-from"),
 ]
