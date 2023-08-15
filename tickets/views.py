@@ -182,7 +182,7 @@ class Mixins_Detail(
 ):
     queryset = Guest.objects.all()
     serializer_class = GustSerializer
-    
+
     def get(self, request, pk):
         return self.retrieve(request, pk) # retrieve method is inherited from RetrieveModelMixin
     
@@ -191,3 +191,20 @@ class Mixins_Detail(
     
     def delete(self, request, pk):
         return self.destroy(request, pk) # destroy method is inherited from DestroyModelMixin
+    
+
+
+
+
+# 6- generics
+# 6.1- GET , POST
+
+class Generics_List(generics.ListCreateAPIView):
+    queryset = Guest.objects.all()
+    serializer_class = GustSerializer
+
+
+# 6.2- GET , PUT , DELETE
+class Generics_Detail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Guest.objects.all()
+    serializer_class = GustSerializer
