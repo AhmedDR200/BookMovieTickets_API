@@ -8,6 +8,8 @@ from rest_framework import status , filters
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import generics , mixins , viewsets
+from rest_framework.authentication import BasicAuthentication , TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 
 # Create your views here.
@@ -202,12 +204,17 @@ class Mixins_Detail(
 class Generics_List(generics.ListCreateAPIView):
     queryset = Guest.objects.all()
     serializer_class = GustSerializer
+    authentication_classes = [TokenAuthentication]
+    # permission_classes = [IsAuthenticated]
 
 
 # 6.2- GET , PUT , DELETE
 class Generics_Detail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Guest.objects.all()
     serializer_class = GustSerializer
+    authentication_classes = [TokenAuthentication]
+    # permission_classes = [IsAuthenticated]
+
 
 
 
