@@ -49,4 +49,8 @@ urlpatterns = [
     path("rest/cbv-generics_detail/<int:pk>", views.Generics_Detail.as_view(), name="cbv-generics_detail"),
     # way 7 (viewsets)--> GET , POST , PUT , DELETE
     path("rest/viewsets/", include(router.urls)),
+    # Find Movie--> tested on postman
+    path("findmovie/",views.findmovie, name="find_movie"),
+    # Create new reservation
+    path("createreservation/", views.createreservation, name="reservation")
 ]
