@@ -23,8 +23,16 @@ urlpatterns = [
     path('django/json-no-model/', views.no_rest_no_model, name="no-no"),
     # way 2
     path("django/json-from-model/", views.no_rest_from_model, name="no-from"),
-    # way 3 --> GET , POST
-    path("rest/fbv_list/", views.fbv_list, name="rest_list"),
-    # way 4 --> GEt , PUT , DELETE
-    path("rest/fbv_detail/<int:pk>", views.fbv_detail, name="rest_detail"),
+    # way 3 (FBV)--> GET , POST
+    path("rest/fbv_list/", views.fbv_list, name="fbv_rest_list"),
+    # way 4 (FBV)--> GEt , PUT , DELETE
+    path("rest/fbv_detail/<int:pk>", views.fbv_detail, name="fbv_rest_detail"),
+    # way 5 (CBV)--> GET , POST
+    path("rest/cbv_list/", views.CBV_List.as_view(), name="cbv_rest_list"),
+    # way 5 (CBV)--> GET , PUT , DELETE
+    path("rest/cbv_detail/<int:pk>", views.CBV_Detail.as_view(), name="cbv_rest_detail"),
+    # way 6 (CBV/mixins-generics)--> GET , POST 
+    path("rest/cbv-mixins_list/", views.Mixins_list.as_view(), name="cbv-mixins_list"),
+    # way 6 (CBV/mixins-generics)--> GET , PUT , DELETE
+    path("rest/cbv-mixins_detail/<int:pk>", views.Mixins_Detail.as_view(), name="cbv-mixins_detail"),
 ]
