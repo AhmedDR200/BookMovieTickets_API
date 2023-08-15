@@ -23,6 +23,8 @@ urlpatterns = [
     path('django/json-no-model/', views.no_rest_no_model, name="no-no"),
     # way 2
     path("django/json-from-model/", views.no_rest_from_model, name="no-from"),
-    # way 3
-    path("rest/fbv_list/", views.fbv_list, name="rest"),
+    # way 3 --> GET , POST
+    path("rest/fbv_list/", views.fbv_list, name="rest_list"),
+    # way 4 --> GEt , PUT , DELETE
+    path("rest/fbv_detail/<int:pk>", views.fbv_detail, name="rest_detail"),
 ]

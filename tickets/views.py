@@ -59,7 +59,7 @@ def fbv_list(request):
         serializer = GustSerializer(guests , many=True ) #many for multiple objects in one time
         return Response(serializer.data)
 
-#POST
+     #POST
     elif request.method =='POST':
         serializer = GustSerializer(data=request.data) #create object
         if serializer.is_valid():
@@ -67,3 +67,28 @@ def fbv_list(request):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
 
+
+
+@api_view(['GET','PUT','DELETE'])
+def fbv_detail(request,pk):
+     #GET  
+    try:  
+     gust = Guest.objects.get(pk=pk)
+    except Guest.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    if request.method =='GET':
+        serializer = GustSerializer(gust) #many for multiple objects in one time
+        return Response(serializer.data)
+
+     #PUT
+    elif request.method =='PUT':
+        serializer = GustSerializer(gust,data=request.data) #create object
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+       
+     #DELETE  
+    if request.method =='DELETE':
+        gust.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
