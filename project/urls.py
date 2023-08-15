@@ -20,6 +20,10 @@ from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
 router.register('guests', views.ViewSets_Geust)
+router.register('movies', views.ViewSets_Movie)
+router.register('reservations', views.ViewSets_Reservation)
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -44,5 +48,5 @@ urlpatterns = [
     # way 6 (CBV/generics)--> GET , PUT , DELETE
     path("rest/cbv-generics_detail/<int:pk>", views.Generics_Detail.as_view(), name="cbv-generics_detail"),
     # way 7 (viewsets)--> GET , POST , PUT , DELETE
-    path("rest/viewsets/", include(router.urls))
+    path("rest/viewsets/", include(router.urls)),
 ]

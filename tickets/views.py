@@ -225,3 +225,16 @@ class ViewSets_Geust(viewsets.ModelViewSet):
 
 # =========================================================================================
 
+# Project Views
+
+class ViewSets_Movie(viewsets.ModelViewSet):
+    queryset = Movie.objects.all()
+    serializer_class = MovieSerializer
+    # filter option
+    filter_backends = [filters.SearchFilter]
+    search_fields=['name']
+
+
+class ViewSets_Reservation(viewsets.ModelViewSet):
+    queryset = Reservation.objects.all()
+    serializer_class = ReservationSerializer
