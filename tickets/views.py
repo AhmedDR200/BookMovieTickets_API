@@ -7,7 +7,7 @@ from .serializers import GustSerializer , MovieSerializer , ReservationSerialize
 from rest_framework import status , filters
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework import generics , mixins
+from rest_framework import generics , mixins , viewsets
 
 
 # Create your views here.
@@ -208,3 +208,20 @@ class Generics_List(generics.ListCreateAPIView):
 class Generics_Detail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Guest.objects.all()
     serializer_class = GustSerializer
+
+
+
+
+
+# 7- ViewSets
+
+class ViewSets_Geust(viewsets.ModelViewSet):
+    queryset = Guest.objects.all()
+    serializer_class = GustSerializer
+
+
+
+
+
+# =========================================================================================
+
